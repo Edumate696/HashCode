@@ -1,1 +1,0 @@
-python %1.py < input/%2.in > output/%2.out

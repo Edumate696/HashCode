@@ -1,5 +1,5 @@
 import random
- 
+
 [D, I, S, V, F] = [int(k) for k in input().split()]
 
 class street:
@@ -19,7 +19,7 @@ STREETS = {}
 for s in range(S):
     [B, E, name, L] = input().split()
     STREETS[name] = street(int(B), int(E), int(L))
- 
+
 CAR_PATH = []
 
 for v in range(V):
@@ -34,16 +34,55 @@ def get_incoming_streets(node):
             res.append(k)
     return res
 
-out_k = random.randint(1,I-1)
+out_k = random.randint(int((I/4)*3.5),I)
 print(out_k)
 
-out_list_k = list(range(out_k))
+out_list_k = list(range(I))
 
 random.shuffle(out_list_k)
+
+out_list_k = out_list_k[:out_k]
 
 for k in out_list_k:
     print(k)
     street_list = get_incoming_streets(k)
     print(len(street_list))
     for inc in street_list:
-        print(inc,random.randint(1,D-1))
+        print(inc,random.randint(1,3))
+
+
+# car = sorted(CAR_PATH, key=len)[50] 
+
+# ins = set()
+# di = {}
+
+# for k in car:
+#     e = STREETS[k].E
+#     ins.add(e)
+#     o = di.get(e, None)
+#     if o:
+#         o.add(k)
+#     else:
+#         o = set([k])
+#     di[e] = o
+
+# print(len(ins))
+# for i in ins:
+#     print(i)
+#     f = di[i]
+#     print(len(f))
+#     for k in f:
+#         print(k, D-1)
+
+
+# node = sorted(range(I), key=lambda x:len(get_incoming_streets(x)))[-1]
+
+# print(1)
+# print(node)
+# income = get_incoming_streets(node)
+
+# income = income[:len(income)//2]
+
+# print(len(income))
+# for k in income:
+#     print(k, D-1)
